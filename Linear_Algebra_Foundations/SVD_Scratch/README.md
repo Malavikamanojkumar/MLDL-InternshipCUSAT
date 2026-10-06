@@ -2,7 +2,7 @@
 
 Compressing an image with SVD, using only NumPy, with the decomposition built by hand from an eigendecomposition.
 
-## 1. Definition
+## Definition
 
 Any real matrix $A \in \mathbb{R}^{m \times n}$ can be factored as
 
@@ -16,14 +16,14 @@ $$A = U \Sigma V^T$$
 
 Every linear map is therefore "rotate, stretch, rotate".
 
-## 2. Application of SVD in Machine Learning:
+## Application of SVD in Machine Learning:
 
 - **Compression / dimensionality reduction:** keep only the largest singular values and drop the rest (this module).
 - **Low-rank structure:** real data (images, user–item tables, embeddings) is often close to low rank, so a few directions carry most of the information.
 - **Rank and conditioning:** the number of non-zero $\sigma_i$ is the rank of $A$, and $\sigma_1/\sigma_r$ measures how ill-conditioned it is.
 - **PCA** is SVD applied to mean-centred data.
 
-## 3. Derivation / intuition
+## Derivation
 
 SVD is computed here by reducing it to an eigenvalue problem on a symmetric matrix.
 
@@ -47,9 +47,9 @@ $A_k$ is the best rank-$k$ approximation of $A$ in the least-squares sense (Ecka
 
 $$\text{compression ratio} = \frac{mn}{mk + k + kn}$$
 
-## 4. Implementation
+## Implementation
 
-### Step 1 — Load the image as a matrix
+### Step 1: Load the image as a matrix
 
 The RGB image is converted to grayscale by averaging the three channels, then scaled to $[0,1]$. The resulting matrix is $A$.
 
@@ -72,7 +72,7 @@ plt.show()
 
 The sample image is $427 \times 640$ pixels, so $A \in \mathbb{R}^{427 \times 640}$ (here $m = 427 < n = 640$).
 
-### Step 2 — SVD from scratch
+### Step 2: SVD from scratch
 
 ```python
 def svd_from_scratch(A):
@@ -112,7 +112,7 @@ U shape: (427, 640), Sigma count: 640, Vt shape: (640, 640)
 
 Because the code eigendecomposes the $n \times n$ matrix $A^TA$, it returns $n = 640$ singular values. Since $\text{rank}(A) \le \min(m,n) = 427$, only the first 427 are genuine. The remaining 213 are numerical zeros (about $10^{-6}$ or exactly 0), and the matching columns of `U` are zero or unreliable. This does not affect the reconstructions below, which only use the largest singular values.
 
-### Step 3 — Check against NumPy
+### Step 3: Check against NumPy
 
 ```python
 r = min(A.shape)
@@ -131,7 +131,7 @@ Full reconstruction error: 1.46e-10
 
 The hand-built singular values match `np.linalg.svd` to about $10^{-11}$, and multiplying the three factors back together recovers $A$.
 
-### Step 4 — Rank-$k$ compression
+### Step 4: Rank-$k$ compression
 
 ```python
 def compress_image(U, sigmas, Vt, k):
@@ -162,9 +162,9 @@ plt.tight_layout()
 plt.show()
 ```
 
-## 5. Results
+## Results
 
-![Rank-k reconstructions](images/svd_reconstructions.png)
+<img width="1696" height="347" alt="svd_reconstructions" src="https://github.com/user-attachments/assets/9cc82a82-52fe-46ac-b174-072476e31afa" />
 
 | k | Compression ratio | Relative error $\|A-A_k\|_F/\|A\|_F$ |
 |---|---|---|
@@ -183,7 +183,7 @@ plt.show()
 
 **The trade-off:** More components give a better image but a lower compression ratio. At $k = 100$ the image is about 7 % off but only 2.6× smaller, which is why the notebook compares several values of $k$ rather than picking one.
 
-## 6. How to run
+## How to run
 
 ```bash
 pip install numpy matplotlib scikit-learn
@@ -192,7 +192,7 @@ jupyter notebook SVD_Scratch.ipynb
 
 `load_sample_image("china.jpg")` ships with scikit-learn, so no download is needed. The notebook also runs directly in Google Colab.
 
-## 7. Limitations
+## Limitations
 
 - Forming $A^TA$ squares the condition number, so very small singular values are inaccurate (this is why the last 213 values here are noise). It is fine for illustrating the idea, but `np.linalg.svd` uses more stable algorithms.
 - `U` is only meaningful for columns with non-negligible $\sigma_i$, so the code is intended for rank-$k$ truncation with small $k$.
