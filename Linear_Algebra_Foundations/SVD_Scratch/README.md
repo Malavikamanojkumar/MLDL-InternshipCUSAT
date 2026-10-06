@@ -2,7 +2,7 @@
 
 Compressing an image with SVD, using only NumPy, with the decomposition built by hand from an eigendecomposition.
 
-##Definition
+## Definition
 
 Any real matrix $A \in \mathbb{R}^{m \times n}$ can be factored as
 
@@ -16,14 +16,14 @@ $$A = U \Sigma V^T$$
 
 Every linear map is therefore "rotate, stretch, rotate".
 
-##Application of SVD in Machine Learning:
+## Application of SVD in Machine Learning:
 
 - **Compression / dimensionality reduction:** keep only the largest singular values and drop the rest (this module).
 - **Low-rank structure:** real data (images, user–item tables, embeddings) is often close to low rank, so a few directions carry most of the information.
 - **Rank and conditioning:** the number of non-zero $\sigma_i$ is the rank of $A$, and $\sigma_1/\sigma_r$ measures how ill-conditioned it is.
 - **PCA** is SVD applied to mean-centred data.
 
-##Derivation
+## Derivation
 
 SVD is computed here by reducing it to an eigenvalue problem on a symmetric matrix.
 
@@ -162,7 +162,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-##Results
+## Results
 
 <img width="1696" height="347" alt="svd_reconstructions" src="https://github.com/user-attachments/assets/9cc82a82-52fe-46ac-b174-072476e31afa" />
 
@@ -183,7 +183,7 @@ plt.show()
 
 **The trade-off:** More components give a better image but a lower compression ratio. At $k = 100$ the image is about 7 % off but only 2.6× smaller, which is why the notebook compares several values of $k$ rather than picking one.
 
-##How to run
+## How to run
 
 ```bash
 pip install numpy matplotlib scikit-learn
@@ -192,7 +192,7 @@ jupyter notebook SVD_Scratch.ipynb
 
 `load_sample_image("china.jpg")` ships with scikit-learn, so no download is needed. The notebook also runs directly in Google Colab.
 
-##Limitations
+## Limitations
 
 - Forming $A^TA$ squares the condition number, so very small singular values are inaccurate (this is why the last 213 values here are noise). It is fine for illustrating the idea, but `np.linalg.svd` uses more stable algorithms.
 - `U` is only meaningful for columns with non-negligible $\sigma_i$, so the code is intended for rank-$k$ truncation with small $k$.
