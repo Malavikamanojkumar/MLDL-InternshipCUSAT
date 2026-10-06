@@ -164,7 +164,7 @@ plt.show()
 
 ## 5. Results
 
-![Rank-k reconstructions](images/svd_reconstructions.png)
+<img width="1696" height="347" alt="svd_reconstructions" src="https://github.com/user-attachments/assets/9cc82a82-52fe-46ac-b174-072476e31afa" />
 
 | k | Compression ratio | Relative error $\|A-A_k\|_F/\|A\|_F$ |
 |---|---|---|
