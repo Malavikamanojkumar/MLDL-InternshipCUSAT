@@ -47,7 +47,7 @@ $A_k$ is the best rank-$k$ approximation of $A$ in the least-squares sense (Ecka
 
 $$\text{compression ratio} = \frac{mn}{mk + k + kn}$$
 
-##Implementation
+## Implementation
 
 ### Step 1: Load the image as a matrix
 
