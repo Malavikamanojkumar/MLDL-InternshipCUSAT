@@ -130,12 +130,6 @@ newton\_path = np.array(newton\_path)
 
 The code takes one step of w ← w − H⁻¹∇f, where H is the Hessian matrix of second derivatives. Multiplying by H⁻¹ divides each direction's step by that direction's curvature. The steep x direction gets a small step (1/20), and the flat y direction gets a big step (1/2). Mathematically, this reshapes the narrow elliptical valley into a round bowl, where the gradient points straight at the minimum. For a quadratic function like this one, it reaches (0, 0) in a single step.
 
-### Plot
-
-
-
-It draws the contour lines of the valley, the red zig-zag path of gradient descent still far from the minimum after 7 steps, and the blue straight line of Newton's method going directly to the minimum.
-
 
 
 ## Results
