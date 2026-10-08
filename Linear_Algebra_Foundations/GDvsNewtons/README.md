@@ -2,8 +2,6 @@
 
 In this module we shall see why gradient descent struggles on an ill-conditioned loss surface, and how Newton's method fixes it by using the Hessian (curvature).
 
-\---
-
 ## Theory
 
 Gradient descent (GD) moves by `-η∇L`. The same scalar `η` is applied to every direction, so it has to be small enough for the *steepest* direction to stay stable, and is then painfully slow in the *flat* direction. Newton's method replaces `η` with the inverse Hessian, `H⁻¹`, which divides each direction's step by that direction's curvature: small steps where the surface is steep, large steps where it is flat. On a quadratic function this lands on the minimum in a single step.
@@ -112,13 +110,12 @@ The code runs 7 steps of w ← w − η∇f from (1.5, 1.5). The learning rate �
 
 
 
-In the steep x direction, the step overshoots the valley floor. x flips sign every step, which produces the zig-zag in the plot.
-
-In the flat y direction, the same step is tiny, so progress toward the minimum is slow.
-
+1. In the steep x direction, the step overshoots the valley floor. x flips sign every step, which produces the zig-zag in the plot.
+2. In the flat y direction, the same step is tiny, so progress toward the minimum is slow.
 
 
-If you make η bigger to speed up y, x overshoots more and eventually diverges (this happens above η = 0.1). If you make it smaller to stop the zig-zag, y crawls even slower. One learning rate can't suit both directions.
+
+If we make η bigger to speed up y, x overshoots more and eventually diverges (this happens above η = 0.1). If we make it smaller to stop the zig-zag, y crawls even slower. One learning rate can't suit both directions.
 
 ### Newton's method
 
@@ -135,8 +132,6 @@ The code takes one step of w ← w − H⁻¹∇f, where H is the Hessian matrix
 
 ### Plot
 
-The remaining code builds a 400 x 400 grid, draws the contours of `f` at levels `\[0.2, 1, 3, 7, 13, 22, 35]`, overlays the red GD path and the blue dashed Newton path, and marks the start point and the minimum.
-
 
 
 It draws the contour lines of the valley, the red zig-zag path of gradient descent still far from the minimum after 7 steps, and the blue straight line of Newton's method going directly to the minimum.
@@ -152,7 +147,7 @@ It draws the contour lines of the valley, the red zig-zag path of gradient desce
 * **Newton (blue, dashed):** a single straight segment from `(1.5, 1.5)` to `(0, 0)`. The path points directly at the minimum because `H⁻¹` rescales the elliptical contours into circles, in which the gradient points at the centre.
 * **Gradient descent (red):** a zig-zag. Each step jumps across the valley in `x` (the steep direction) while creeping towards 0 in `y`. After 7 steps it is still at about `(-0.37, 0.37)`, not at the minimum.
 
-**Numbers behind the red path** (replaying the same update rule as the notebook; these are not printed by the notebook itself):
+**Numbers behind the red path**:
 
 |Step|x|y|f(x, y)|
 |-:|-:|-:|-:|
