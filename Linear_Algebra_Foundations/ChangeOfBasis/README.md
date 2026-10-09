@@ -80,13 +80,12 @@ The round trip returns the original vector exactly, so the two descriptions are 
 
 ### Plot 1: two grids, one vector
 
-![Standard grid (grey, solid) and new basis grid (teal, dashed) with the same vector](images/grids_overlay.png)
-
+<img width="903" height="711" alt="grids_overlay" src="https://github.com/user-attachments/assets/d694a795-77bf-4c00-95f7-448f1eb6c573" />
 The grey grid is the standard lens and the teal dashed grid is the new one. The red arrow is a single object that sits on both grids. Read against the grey grid, it ends at $(3,3)$. Read against the teal grid, it ends at the lattice point reached by 2 steps of $\mathbf{b}_1$ and 1 step of $\mathbf{b}_2$. The teal cells are parallelograms, and each has area $|\det P| = 3$ times that of a unit square.
 
 ### Plot 2: two recipes for the same arrow
 
-![The vector built as 2 b1 + 1 b2 and as 3 e1 + 3 e2](images/two_recipes.png)
+<img width="903" height="711" alt="two_recipes" src="https://github.com/user-attachments/assets/e22f964a-cd1b-4076-934b-6d50b2d99514" />
 
 The plot shows both ways of building the red vector, each path ending at its tip:
 
