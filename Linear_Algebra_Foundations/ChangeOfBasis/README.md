@@ -1,8 +1,6 @@
 # Change of Basis
 
-> **Core idea:** a vector is a point in space. Its coordinates are only a description of that point, and the description depends on which basis you use to look at it. Changing the basis changes the numbers, never the point.
-
-This module uses a small 2D example, with a plot at each step, to build that idea. The notebook (`COB.ipynb`) contains the step-by-step derivation. This README explains the concept behind it and what the results show.
+**Core idea:** a vector is a point in space. Its coordinates are only a description of that point and the description depends on which basis we use to look at it. Changing the basis changes the numbers and never the point.
 
 ---
 
@@ -12,7 +10,7 @@ This module uses a small 2D example, with a plot at each step, to build that ide
 
 Take the pair of numbers $(3, 3)$. It is tempting to treat this pair as the vector itself. It is not. The pair is a set of instructions: *"take 3 steps along the first reference direction, then 3 steps along the second."* The arrow in space is the actual object. The numbers only say how to build it from a chosen pair of reference directions.
 
-By default we use the **standard basis** $\mathbf{e}_1=(1,0)$ and $\mathbf{e}_2=(0,1)$, which are "right" and "up". This is a convention, and nothing forces it. Any two linearly independent vectors can serve as reference directions, and each choice gives every vector in the plane a different numerical description.
+By default we use the **standard basis** $\mathbf{e}_1=(1,0)$ and $\mathbf{e}_2=(0,1)$, which are "right" and "up". This is a convention and nothing forces it. Any two linearly independent vectors can serve as reference directions and each choice gives every vector in the plane a different numerical description.
 
 ### Changing basis means changing the lens
 
@@ -36,7 +34,7 @@ $$
 
 Geometrically, $P$ is the linear map that carries the square grid onto the observer-2 grid ($\mathbf{e}_1\mapsto\mathbf{b}_1$, $\mathbf{e}_2\mapsto\mathbf{b}_2$). That is why the new basis vectors are its columns.
 
-### Why this matters in machine learning
+### Application of COB in Machine Learning
 
 Almost every vector in ML (a data row, an embedding, an image) is a coordinate vector relative to some implicit basis, usually "one axis per feature". Many methods amount to finding a better basis for the same data:
 
@@ -82,7 +80,7 @@ The round trip returns the original vector exactly, so the two descriptions are 
 
 ![Standard grid (grey, solid) and new basis grid (teal, dashed) with the same vector](images/grids_overlay.png)
 
-The grey grid is the standard lens and the teal dashed grid is the new one. The red arrow is a single object that sits on both grids. Read against the grey grid, it ends at $(3,3)$. Read against the teal grid, it ends at the lattice point reached by 2 steps of $\mathbf{b}_1$ and 1 step of $\mathbf{b}_2$. The teal cells are parallelograms, and each has area $|\det P| = 3$ times that of a unit square.
+The grey grid is the standard lens and the teal dashed grid is the new one. The red arrow is a single object that sits on both grids. Read against the grey grid, it ends at (3,3). Read against the teal grid, it ends at the lattice point reached by 2 steps of b1 and 1 step of b2. The teal cells are parallelograms and each has area |det P| = 3 times that of a unit square.
 
 ### Plot 2: two recipes for the same arrow
 
