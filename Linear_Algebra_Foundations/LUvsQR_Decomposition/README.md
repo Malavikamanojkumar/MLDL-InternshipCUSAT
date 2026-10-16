@@ -6,11 +6,11 @@ Decomposing a matrix means cutting that one move into two simpler moves. LU and 
 
 $$A = \begin{bmatrix}4 & 2\\ 1 & 3\end{bmatrix}.$$
 
-The notebook (`LUvsQR.ipynb`) is short: factor $A$ both ways, check the factorisations, and plot the unit square before and after each factor.
+The notebook (`LUvsQR.ipynb`) factors $A$ both ways, checks the factorisations and plots the unit square before and after each factor.
 
 ## LU: Gaussian elimination, with the receipts kept
 
-To solve a system by hand you clear the entry below the top-left pivot: here, subtract $\tfrac14$ of row 1 from row 2. What is left is an upper triangular matrix $U$. LU decomposition simply keeps the multiplier you used, $\tfrac14$, in a matrix $L$, so that $A = LU$ and nothing is thrown away.
+To solve a system by hand we clear the entry below the top-left pivot: here, subtract $\tfrac14$ of row 1 from row 2. What is left is an upper triangular matrix $U$. LU decomposition simply keeps the multiplier you used, $\tfrac14$, in a matrix $L$, so that $A = LU$ and nothing is thrown away.
 
 ```python
 def lu_decomposition(A):
@@ -62,7 +62,7 @@ Q =                     R =
 
 The columns of $Q$ are unit vectors at right angles to each other ($Q^\top Q = I$), so $Q$ is a rotation: it can turn the plane but cannot stretch or tilt it. The notebook confirms that $LU$ and $QR$ both rebuild $A$ exactly and that $Q^\top Q = I$.
 
-## Watching the angle
+## The angle
 
 Take the unit square spanned by $e_1$ and $e_2$ and push it through a factor. The two arrows (green for $e_1$, orange for $e_2$) show where the basis vectors land, and the shaded shape is where the square lands. The dashed outline is the original.
 
@@ -85,7 +85,7 @@ Angle between the images of e1 and e2 (originally 90°):
 
 $U$ changes the angle even more than $L$ does. So LU cuts $A$ into two moves that both bend space: a shear $L$ and a stretch-and-shear $U$, neither of which is rigid. QR cuts $A$ into one rigid move, $Q$, followed by one that does all the bending, $R$. Because $Q$ cannot change any lengths or angles, everything that $A$ does to shapes is concentrated in $R$ (you can check that $R$ and $A$ stretch the plane by exactly the same amounts), and the orthogonal part is cleanly separated out.
 
-## Running it
+## Running 
 
 ```bash
 pip install numpy matplotlib
