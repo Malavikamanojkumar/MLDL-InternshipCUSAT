@@ -106,7 +106,7 @@ In CR, $C$ consists of **actual, unedited columns of $A$**. If 5000 products are
 
 ## Code Implementation
 
-`CR\\\_Decomposition.ipynb` runs this idea on a tiny dataset where one feature is deliberately redundant.
+`CR_Decomposition.ipynb` runs this idea on a tiny dataset where one feature is deliberately redundant.
 
 ### Dataset
 
