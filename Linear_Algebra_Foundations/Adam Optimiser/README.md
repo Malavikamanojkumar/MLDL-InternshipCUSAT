@@ -1,6 +1,6 @@
 # Understanding Adam Optimiser
 
-This guide is for anyone who has seen the Adam update rule, nodded politely, and still doesn't quite feel what it does. The companion notebook, [`Adam\_Optimiser\_Comparison.ipynb`](Adam_Optimiser_Comparison.ipynb), implements GD, Momentum, AdaGrad, RMSProp and Adam from scratch and lets you watch them side by side. 
+Adam is the default optimiser in most deep learning code and it is usually treated as a black box that "just works". This module opens it up. The companion notebook [`Adam\\\_Optimiser\\\_Comparison.ipynb`](Adam_Optimiser_Comparison.ipynb) builds Adam and four of its relatives (Gradient Descent, Momentum, AdaGrad, RMSProp) and runs them side by side on small loss surfaces where the geometry is known exactly.  
 
 ## The Problem Every Optimiser Faces
 
