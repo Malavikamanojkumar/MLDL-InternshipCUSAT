@@ -3,7 +3,7 @@
 A matrix full of redundant columns can be written as a **product of two smaller matrices**:
 
 $$
-A_{m\times n} = C_{m\times r}\,R_{r\times n}, \qquad r = \operatorname{rank}(A)
+A_{m\times n} = C_{m\times r}R_{r\times n}, \qquad r = \text{rank}(A)
 $$
 
 - **$C$** holds the *pieces*: the $r$ linearly independent columns of $A$, copied exactly as they appear in $A$.
