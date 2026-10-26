@@ -68,26 +68,26 @@ So $R$ always contains an $r\times r$ identity block (in the pivot columns), and
 
 ## What $C$ and $R$ tells us about $A$?
 
-**Column space.** $C$ spans exactly the same space as $A$, so $\operatorname{col}(C)=\operatorname{col}(A)$ and $\dim = r$. Because of this, whether $A\mathbf x=\mathbf b$ is solvable can be checked against $C$ alone: a solution exists iff $\mathbf b\in\operatorname{col}(C)$.
-
+**Column space.** $C$ spans exactly the same space as $A$, so $\text{col}(C)=\text{col}(A)$ and $\dim = r$. Because of this, whether $A\mathbf x=\mathbf b$ is solvable can be checked against $C$ alone: a solution exists iff $\mathbf b\in\text{col}(C)$.
+ 
 **Row space.** Every row of $A$ is a combination of the $r$ rows of $R$, so $R$ is a clean basis for the row space of $A$. Unlike $C$, these rows are *not* rows of the original matrix.
-
+ 
 **Null space.** Since the columns of $C$ are independent, $C(\cdot)=0$ forces $(\cdot)=0$. Therefore
-
+ 
 $$
-A\mathbf x = CR\mathbf x = 0 \;\Longrightarrow\; R\mathbf x = 0,
+A\mathbf{x} = CR\mathbf{x} = 0 \quad\Longrightarrow\quad R\mathbf{x} = 0,
 $$
-
+ 
 so $\mathcal N(A)=\mathcal N(R)$. The directions that $A$ throws away are exactly the ones $R$ throws away.
-
-**Rank.** Both factors have rank $r$, and $\dim\operatorname{col}(A)=\dim\operatorname{row}(A)=r$.
-
+ 
+**Rank.** Both factors have rank $r$, and $\dim\text{col}(A)=\dim\text{row}(A)=r$.
+ 
 Another way to read the product is as a sum of rank-one pieces: if $C$ has columns $c_k$ and $R$ has rows $\rho_k^\top$, then
-
+ 
 $$
-A=\sum_{k=1}^{r} c_k\,\rho_k^\top .
+A=\sum_{k=1}^{r} c_k\rho_k^\top .
 $$
-
+ 
 ---
 
 ## Why use CR rather than SVD or PCA?
