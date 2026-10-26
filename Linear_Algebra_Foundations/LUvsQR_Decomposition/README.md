@@ -66,11 +66,7 @@ The columns of $Q$ are unit vectors at right angles to each other ($Q^\\top Q = 
 
 Take the unit square spanned by $e\_1$ and $e\_2$ and push it through a factor. The two arrows (green for $e\_1$, orange for $e\_2$) show where the basis vectors land, and the shaded shape is where the square lands. The dashed outline is the original.
 
-
-
-<img src="images/angles\_L\_vs\_Q.png" alt="Unit square before, after L, and after Q" width="900">
-
-
+<img width="1937" height="659" alt="angles_L_vs_Q" src="https://github.com/user-attachments/assets/2102f885-d18a-478b-933b-0f65170ac54a" />
 
 After $L$ the square has been slid into a parallelogram and the angle between the arrows has dropped from 90° to 76°. After $Q$ the square has only rotated; it is still a square, and the angle is still 90°. Lengths are preserved as well, which is why the rotated square is the same size as the original.
 
