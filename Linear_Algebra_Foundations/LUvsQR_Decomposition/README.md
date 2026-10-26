@@ -13,24 +13,24 @@ The notebook (`LUvsQR.ipynb`) factors $A$ both ways, checks the factorisations a
 To solve a system by hand we clear the entry below the top-left pivot: here, subtract $\\tfrac14$ of row 1 from row 2. What is left is an upper triangular matrix $U$. LU decomposition simply keeps the multiplier you used, $\\tfrac14$, in a matrix $L$, so that $A = LU$ and nothing is thrown away.
 
 ```python
-def lu\_decomposition(A):
-    n = A.shape\[0]
+def lu\\\_decomposition(A):
+    n = A.shape\\\[0]
     U = A.astype(float).copy()
     L = np.eye(n)
     for col in range(n):
-        pivot = U\[col, col]
+        pivot = U\\\[col, col]
         assert abs(pivot) > 1e-12, "Zero pivot: this simple version does not swap rows."
         for row in range(col + 1, n):
-            factor = U\[row, col] / pivot        # the multiplier
-            L\[row, col] = factor                # store it in L
-            U\[row, :] -= factor \* U\[col, :]     # eliminate the entry
+            factor = U\\\[row, col] / pivot        # the multiplier
+            L\\\[row, col] = factor                # store it in L
+            U\\\[row, :] -= factor \\\* U\\\[col, :]     # eliminate the entry
     return L, U
 ```
 
 ```
 L =                 U =
-\[\[1.   0.  ]        \[\[4.  2. ]
- \[0.25 1.  ]]        \[0.  2.5]]
+\\\[\\\[1.   0.  ]        \\\[\\\[4.  2. ]
+ \\\[0.25 1.  ]]        \\\[0.  2.5]]
 ```
 
 Geometrically, "subtract a multiple of one row from another" is a **shear**: one direction slides sideways in proportion to another, like pushing the top of a deck of cards. A shear keeps areas the same (so $\\det L = 1$, and all the area scaling of $A$ sits in $U$) but it does not keep shapes: a square slides into a parallelogram.
@@ -40,24 +40,24 @@ Geometrically, "subtract a multiple of one row from another" is a **shear**: one
 Gram–Schmidt builds an orthonormal pair of directions out of the columns of $A$. The first column is just rescaled to length 1. For the second column, subtract the part that already points along the first direction, and rescale what is left to length 1. What you subtracted and the lengths you divided by go into $R$.
 
 ```python
-def qr\_decomposition(A):
+def qr\\\_decomposition(A):
     n, m = A.shape
     Q = np.zeros((n, m))
     R = np.zeros((m, m))
     for j in range(m):
-        v = A\[:, j].astype(float).copy()
+        v = A\\\[:, j].astype(float).copy()
         for i in range(j):
-            R\[i, j] = Q\[:, i] @ A\[:, j]     # how much of q\_i is in this column
-            v -= R\[i, j] \* Q\[:, i]          # remove it
-        R\[j, j] = np.linalg.norm(v)         # what is left
-        Q\[:, j] = v / R\[j, j]               # make it unit length
+            R\\\[i, j] = Q\\\[:, i] @ A\\\[:, j]     # how much of q\\\_i is in this column
+            v -= R\\\[i, j] \\\* Q\\\[:, i]          # remove it
+        R\\\[j, j] = np.linalg.norm(v)         # what is left
+        Q\\\[:, j] = v / R\\\[j, j]               # make it unit length
     return Q, R
 ```
 
 ```
 Q =                     R =
-\[\[ 0.97  -0.243]        \[\[4.123 2.668]
- \[ 0.243  0.97 ]]        \[0.    2.425]]
+\\\[\\\[ 0.97  -0.243]        \\\[\\\[4.123 2.668]
+ \\\[ 0.243  0.97 ]]        \\\[0.    2.425]]
 ```
 
 The columns of $Q$ are unit vectors at right angles to each other ($Q^\\top Q = I$), so $Q$ is a rotation: it can turn the plane but cannot stretch or tilt it. The notebook confirms that $LU$ and $QR$ both rebuild $A$ exactly and that $Q^\\top Q = I$.
@@ -66,7 +66,7 @@ The columns of $Q$ are unit vectors at right angles to each other ($Q^\\top Q = 
 
 Take the unit square spanned by $e\_1$ and $e\_2$ and push it through a factor. The two arrows (green for $e\_1$, orange for $e\_2$) show where the basis vectors land, and the shaded shape is where the square lands. The dashed outline is the original.
 
-!\[Unit square before, after L, and after Q](images/angles\_L\_vs\_Q.png)
+\[Unit square before, after L, and after Q](images/angles\_L\_vs\_Q.png)
 
 After $L$ the square has been slid into a parallelogram and the angle between the arrows has dropped from 90° to 76°. After $Q$ the square has only rotated; it is still a square, and the angle is still 90°. Lengths are preserved as well, which is why the rotated square is the same size as the original.
 
