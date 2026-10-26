@@ -68,7 +68,7 @@ Take the unit square spanned by $e\_1$ and $e\_2$ and push it through a factor. 
 
 
 
-!\[Unit square before, after L, and after Q](images/angles\_L\_vs\_Q.png)
+<img src="images/angles\_L\_vs\_Q.png" alt="Unit square before, after L, and after Q" width="900">
 
 
 
