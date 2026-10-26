@@ -13,7 +13,7 @@ The decomposition is usually credited to Gilbert Strang. It is the most elementa
 
 ---
 
-## A small example, by hand
+## Illustration
 
 Take a $3\times 6$ matrix with a zero column and a few dependent columns:
 
@@ -66,7 +66,7 @@ So $R$ always contains an $r\times r$ identity block (in the pivot columns), and
 
 ---
 
-## What $C$ and $R$ tell you about $A$
+## What $C$ and $R$ tells us about $A$?
 
 **Column space.** $C$ spans exactly the same space as $A$, so $\operatorname{col}(C)=\operatorname{col}(A)$ and $\dim = r$. Because of this, whether $A\mathbf x=\mathbf b$ is solvable can be checked against $C$ alone: a solution exists iff $\mathbf b\in\operatorname{col}(C)$.
 
@@ -104,7 +104,7 @@ In CR, $C$ consists of **actual, unedited columns of $A$**. If 5000 products are
 
 ---
 
-## The notebook
+## Code Implementation
 
 `CR_Decomposition.ipynb` runs this idea on a tiny dataset where one feature is deliberately redundant.
 
@@ -141,7 +141,7 @@ Features: ['Item_Price', 'Shipping_Fee', 'Total_Cost', 'Quantity']
 
 Here $a_3 = a_1 + a_2$ (in 1-based numbering), so the rank is 3, not 4.
 
-### Step 1: row-reduce to get $R$ and the pivot columns
+### Step 1: Row-Reduce to get $R$ and the Pivot Columns
 
 `sympy`'s `rref()` returns both the reduced matrix and the indices of the pivot columns.
 
@@ -151,7 +151,7 @@ R_sympy, pivots = sympy_A.rref()
 R = np.array(R_sympy).astype(float)
 ```
 
-### Step 2: build $C$ from the pivot columns of the original $A$
+### Step 2: Build $C$ from the Pivot Columns of the Original $A$
 
 ```python
 C = A[:, pivots]
@@ -179,7 +179,7 @@ Read the third column of $R$, $(1,1,0)^\top$, with the column-picker view from a
 
 The other three columns are identity columns, so `Item_Price`, `Shipping_Fee` and `Quantity` are copied through unchanged.
 
-### Step 3: check that $CR$ gives back $A$
+### Step 3: Check that $CR$ gives back $A$?
 
 `rref()` returns an $m\times n$ matrix, which here is $5\times 4$. Only its first `rank` rows are non-zero, and `C` has `rank` columns. So the code trims `R` to those rows before multiplying:
 
@@ -199,7 +199,7 @@ reconstruction = C @ R_trimmed   # (5, 3) @ (3, 4) -> (5, 4)
 Matches original A: True
 ```
 
-### Step 4: drop the redundant columns
+### Step 4: Drop the Redundant Columns
 
 Any column that is not a pivot column is a combination of the others and can go.
 
@@ -225,7 +225,7 @@ The reduced dataset is identical to `C`: a $5\times 3$ matrix of three real, nam
 
 ---
 
-## Things worth knowing
+## Note:
 
 - **Pivots are chosen left to right.** RREF picks the *first* set of independent columns it meets. Here `Total_Cost` is dropped because it comes after the two columns it depends on. Had it been placed first, it would have been kept and one of its summands dropped, giving an equally valid but different $C$.
 - **Exact arithmetic matters.** The code uses `sympy` for the row reduction. The input here is small integers stored as floats, which `sympy` handles cleanly. Real-world data with noisy floating-point values will rarely produce exactly dependent columns, so the rank found this way is the *exact* rank, not a numerical one. For noisy data, SVD-based rank estimation is the more robust tool.
@@ -233,11 +233,11 @@ The reduced dataset is identical to `C`: a $5\times 3$ matrix of three real, nam
 
 ---
 
-## Running it
+## How to Run the Code
 
 ```bash
 pip install numpy sympy
 jupyter notebook CR_Decomposition.ipynb
 ```
 
-The notebook also runs directly in Google Colab; the first cell installs `sympy`.
+The notebook also runs directly in Google Colab, the first cell installs `sympy`.
