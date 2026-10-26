@@ -183,7 +183,7 @@ plt.show()
 
 **The trade-off:** More components give a better image but a lower compression ratio. At $k = 100$ the image is about 7 % off but only 2.6× smaller, which is why the notebook compares several values of $k$ rather than picking one.
 
-## How to run
+## How to Run the Code
 
 ```bash
 pip install numpy matplotlib scikit-learn
@@ -192,7 +192,7 @@ jupyter notebook SVD_Scratch.ipynb
 
 `load_sample_image("china.jpg")` ships with scikit-learn, so no download is needed. The notebook also runs directly in Google Colab.
 
-## Limitations
+## Note:
 
 - Forming $A^TA$ squares the condition number, so very small singular values are inaccurate (this is why the last 213 values here are noise). It is fine for illustrating the idea, but `np.linalg.svd` uses more stable algorithms.
 - `U` is only meaningful for columns with non-negligible $\sigma_i$, so the code is intended for rank-$k$ truncation with small $k$.
