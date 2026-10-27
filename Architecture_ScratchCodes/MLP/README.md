@@ -1,4 +1,3 @@
-<img width="842" height="470" alt="actual_vs_predicted" src="https://github.com/user-attachments/assets/840de143-6563-420e-b341-3a37e05eaa8f" />
 # MULTILAYER PERCEPTRON (MLP)
 
 A Multilayer Perceptron is a feed-forward network: a stack of fully connected layers with non-linear activations in between, mapping a fixed-size input vector to an output in a single pass. This module implements a 3 → 16 → 8 → 1 MLP entirely in NumPy: the forward pass, the loss, backpropagation derived by hand with the chain rule and a plain stochastic gradient descent (SGD) update. scikit-learn is used only for the train/test split, the scaling and the metrics. What distinguishes the MLP is that it is a **static mapping**: each input is processed independently, with no state carried from one sample to the next and no notion of order within the input.
