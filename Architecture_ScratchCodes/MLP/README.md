@@ -97,7 +97,6 @@ The loss falls sharply in the first 100 epochs and then decreases very slowly, f
 | MSE | 2.6861 |
 | MAE | 1.4005 |
 
-Train MSE/MAE in original units are not printed by the notebook, so they are not reported here.
 
 ### Actual vs predicted
 
