@@ -2,15 +2,18 @@
 
 A Multilayer Perceptron is a feed-forward network: a stack of fully connected layers with non-linear activations in between, mapping a fixed-size input vector to an output in a single pass. This module implements a 3 → 16 → 8 → 1 MLP entirely in NumPy: the forward pass, the loss, backpropagation derived by hand with the chain rule and a plain stochastic gradient descent (SGD) update. scikit-learn is used only for the train/test split, the scaling and the metrics. What distinguishes the MLP is that it is a **static mapping**: each input is processed independently, with no state carried from one sample to the next and no notion of order within the input.
 
-## Problem Statement and Dataset Used
+## PROBLEM STATEMENT
 
-**TASK** Predict the next day's temperature from today's three readings. This is a regression problem.
+**TASK** 
+Predict the next day's temperature from today's three readings. This is a regression problem.
 
-**DATASET** `temp_vanilla.csv` contains 100 consecutive days. Each row has `temp_morning`, `temp_afternoon`, `temp_evening` (the inputs) and `next_day_temp` (the target).
+**DATASET** 
+`temp_vanilla.csv` contains 100 consecutive days. Each row has `temp_morning`, `temp_afternoon`, `temp_evening` (the inputs) and `next_day_temp` (the target).
 
-**PROBLEM STATEMENT** Each day's three readings form one flat vector $x \in \mathbb{R}^{3\times 1}$ ($d=3$). Rows are treated as independent samples, so the network has no notion of the order morning → afternoon → evening. It maps the vector directly to a single output ($k=1$).
+**PROBLEM STATEMENT** 
+Each day's three readings form one flat vector $x \in \mathbb{R}^{3\times 1}$ ($d=3$). Rows are treated as independent samples, so the network has no notion of the order morning → afternoon → evening. It maps the vector directly to a single output ($k=1$).
 
-**Split and scaling.**
+**Split and scaling:**
 
 - 80/20 train/test split with `random_state=42`, giving 80 training and 20 test samples. The split is random, so test samples are not consecutive days.
 - Inputs and targets are both standardised (zero mean, unit variance). The scalers are fitted on the training data only and then applied to the test data.
@@ -21,7 +24,7 @@ A Multilayer Perceptron is a feed-forward network: a stack of fully connected la
 | Input $X$ | $(80, 3)$ | $(20, 3)$ |
 | Target $y$ | $(80, 1)$ | $(20, 1)$ |
 
-**Loss and metrics.** Training minimises the per-sample squared error
+**Loss and metrics:** Training minimises the per-sample squared error
 
 $$
 L = \tfrac{1}{2}\,\lVert \hat{y} - y \rVert^2 .
@@ -29,7 +32,7 @@ $$
 
 Evaluation uses MSE and MAE, both computed in original temperature units.
 
-## Architecture
+## ARCHITECTURE
 
 ```mermaid
 flowchart LR
@@ -66,7 +69,7 @@ Design choices:
 - **Linear output.** The target is a continuous, unbounded quantity, so no squashing function is applied to $\hat{y}$.
 - **Small random initialisation.** Weights are drawn as $0.1 \times \mathcal{N}(0,1)$ (standard deviation 0.1) and biases start at zero. This keeps the pre-activations small so tanh starts in its near-linear region instead of saturating.
 
-## Results
+## RESULTS
 
 ### Training loss
 
