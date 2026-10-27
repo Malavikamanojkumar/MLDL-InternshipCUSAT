@@ -1,23 +1,22 @@
 # Vanilla Recurrent Neural Network (from scratch)
 
-## Intro
 
 A recurrent neural network (RNN) processes a sequence one element at a time while carrying a hidden state $h_t$ forward, so that each step can depend on everything seen before it. The same weights are reused at every timestep, which makes the parameter count independent of the sequence length. This module implements a vanilla RNN entirely in NumPy: the forward pass through time, the squared-error loss, backpropagation through time (BPTT), and a per-sample stochastic gradient descent (SGD) update. No deep-learning framework is used; scikit-learn is used only for the train/test split, scaling, and the MSE metric.
 
-## Problem Statement and Dataset Used
+## Problem Statement
 
-**Data.** `temp_vanilla.csv` holds one record per day with four columns: `temp_morning`, `temp_afternoon`, `temp_evening`, and the target `next_day_temp`. There are 100 days in total (80 train + 20 test).
+**Data:** `temp_vanilla.csv` holds one record per day with four columns: `temp_morning`, `temp_afternoon`, `temp_evening`, and the target `next_day_temp`. There are 100 days in total (80 train + 20 test).
 
-**Task.** Regression: predict the next day's temperature from the three readings of the current day.
+**Task:** Regression: predict the next day's temperature from the three readings of the current day.
 
-**Framing for the RNN.** The three readings are not flattened into one vector. They are consumed as a sequence of $T=3$ timesteps with a single scalar feature each ($d=1$), in the order morning → afternoon → evening. The prediction is read from the final hidden state $h_T$ only.
+**Framing for the RNN:** The three readings are not flattened into one vector. They are consumed as a sequence of $T=3$ timesteps with a single scalar feature each ($d=1$), in the order morning → afternoon → evening. The prediction is read from the final hidden state $h_T$ only.
 
-**Preprocessing (from the notebook).**
+**Preprocessing**
 - Split: `train_test_split(test_size=0.2, random_state=42)`.
 - Scaling: `StandardScaler` for the inputs and a separate `StandardScaler` for the target, both fitted on the training set only and then applied to the test set. Each of the three input columns is standardised independently, so the scalar fed at step $t$ is the standardised value of that reading.
 - Test predictions are mapped back to the original units with `y_scaler.inverse_transform` before computing the metric.
 
-**Loss and metric.** Per-sample loss $L = \tfrac12\|\hat y - y\|^2$ on the standardised target during training. Evaluation uses MSE on the test set in original temperature units.
+**Loss and metric:** Per-sample loss $L = \tfrac12\|\hat y - y\|^2$ on the standardised target during training. Evaluation uses MSE on the test set in original temperature units.
 
 | Quantity | Shape |
 |---|---|
@@ -49,7 +48,7 @@ flowchart LR
 
 The same $W_{xh}, W_{hh}, b_h$ are used at all three steps. Only $h_T$ feeds the output layer.
 
-### Hyperparameters and parameters
+### Hyperparameters and Parameters
 
 | Setting | Value |
 |---|---|
@@ -75,7 +74,7 @@ The same $W_{xh}, W_{hh}, b_h$ are used at all three steps. Only $h_T$ feeds the
 | $b_y$ | $k \times 1 = 1\times 1$ | 1 |
 | **Total** | | **89** |
 
-### Forward pass
+### Forward Pass
 
 For $t = 1,\dots,T$ with $h_0 = 0$:
 
@@ -106,7 +105,7 @@ $$L = \tfrac12\,\|\hat y - y\|^2$$
 loss = 0.5 * np.sum((y_hat - target) ** 2)
 ```
 
-### Backpropagation through time
+### Backpropagation Through Time
 
 Because the weights are shared across timesteps, the gradients of $W_{xh}$, $W_{hh}$ and $b_h$ are accumulated over all steps. The derivative of the activation is $\tanh'(z) = 1 - \tanh^2(z)$, which is $1 - h_t^2$ since $h_t = \tanh(\cdot)$.
 
@@ -149,7 +148,7 @@ for t in reversed(range(3)):              # t = 2, 1, 0
     dh_next = Whh.T @ da                  # δh_{t-1}
 ```
 
-### Parameter update
+### Parameter Update
 
 $$\theta \leftarrow \theta - \eta\,\frac{\partial L}{\partial \theta},\qquad \theta \in \{W_{xh},\,W_{hh},\,b_h,\,W_{hy},\,b_y\}$$
 
@@ -163,7 +162,7 @@ by  -= learning_rate * dby
 
 The update runs once per training sample, so there are 80 updates per epoch.
 
-## Results
+## RESULTS
 
 ### Training loss
 
