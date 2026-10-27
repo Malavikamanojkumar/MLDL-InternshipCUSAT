@@ -10,9 +10,9 @@ A Long Short-Term Memory (LSTM) network is a recurrent network whose memory is s
 
 **Framing for LSTM:** Instead of treating one day's three readings as a sequence, each sample is a **sliding window of $T=5$ consecutive days**, and each day contributes a $d=3$ feature vector (morning, afternoon, evening). The target for a window is the `next_day_temp` of its last day, i.e. the temperature of the day immediately after the window ends.
 
-$$
+```math
 X^{(j)} = \big(r_j,\, r_{j+1},\, \dots,\, r_{j+T-1}\big), \qquad y^{(j)} = \text{next\_day\_temp}_{\,j+T-1}, \qquad r_j \in \mathbb{R}^{3}
-$$
+```
 
 ```python
 def build_sequences(features, targets, T):
