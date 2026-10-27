@@ -10,7 +10,7 @@ Predict the next day's temperature from today's three readings. This is a regres
 **DATASET** 
 `temp_vanilla.csv` contains 100 consecutive days. Each row has `temp_morning`, `temp_afternoon`, `temp_evening` (the inputs) and `next_day_temp` (the target).
 
-**PROBLEM STATEMENT** 
+**PROBLEM FRAMING** 
 Each day's three readings form one flat vector $x \in \mathbb{R}^{3\times 1}$ ($d=3$). Rows are treated as independent samples, so the network has no notion of the order morning → afternoon → evening. It maps the vector directly to a single output ($k=1$).
 
 **Split and scaling:**
