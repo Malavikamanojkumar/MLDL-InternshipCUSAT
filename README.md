@@ -25,10 +25,10 @@ Deep learning architectures implemented from scratch, with the forward pass, los
 
 | # | Module | Description |
 |---|--------|-------------|
-| 1 | [MLP](./Architecture_ScratchCodes/MLP) | Multi-layer perceptron regression predicting next-day temperature, trained with per-sample SGD |
-| 2 | [RNN](./Architecture_ScratchCodes/RNN) | Vanilla RNN regression on the same temperature data, with the daily readings treated as a $T=3$ sequence and trained with BPTT |
-| 3 | [LSTM](./Architecture_ScratchCodes/LSTM) | LSTM regression over sliding windows of $T=5$ days, trained with gated BPTT |
-| 4 | [CNN](./Architecture_ScratchCodes/CNN) | Convolutional network classifying 8×8 images of "X" and "O" |
+| 1 | [MLP](./Architecture_ScratchCodes/1.MLP) | Multi-layer perceptron regression predicting next-day temperature, trained with per-sample SGD |
+| 2 | [RNN](./Architecture_ScratchCodes/2.RNN) | Vanilla RNN regression on the same temperature data, with the daily readings treated as a $T=3$ sequence and trained with BPTT |
+| 3 | [LSTM](./Architecture_ScratchCodes/3.LSTM) | LSTM regression over sliding windows of $T=5$ days, trained with gated BPTT |
+| 4 | [CNN](./Architecture_ScratchCodes/4.CNN) | Convolutional network classifying 8×8 images of "X" and "O" |
 | 5 | [Token Embedding and Positional Encoding](./Architecture_ScratchCodes/Token_Embedding_Positional_Encoding) | Step-by-step construction of token embeddings and sinusoidal positional encodings, as used at the input of a Transformer |
 
 ### Linear_Algebra_and_Optimisation
