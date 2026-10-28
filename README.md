@@ -10,18 +10,18 @@ The internship studied machine learning and deep learning from their mathematica
 |---|---|
 | **Programme** | Summer Internship Programme: *Advanced Mathematical Foundations of Machine Learning and Deep Learning Optimization* |
 | **Institution** | Department of Mathematics, Cochin University of Science and Technology (CUSAT), Kochi |
-| **Duration** | 1 June 2026 – 29 June 2026 |
+| **Duration** | 1 June 2026 – 29 June 2026 (120 hours) |
 | **Guide** | Dr. Linu Pinto, Assistant Professor |
 | **Certificate** | [Internship Certificate (PDF)](assets/Internship_Certificate.pdf) |
 | **Notes and report** | [Google Drive: LaTeX notes and internship report](<YOUR_DRIVE_LINK>) |
 
 ## Projects
 
-The repository is organised into two sections : 
+This repository is organised into two sections. **Architecture_ScratchCodes** contains from-scratch implementations of the machine learning architectures: MLP, RNN, LSTM, CNN and the Transformer's input embeddings. **Linear_Algebra_and_Optimisation** covers the mathematics behind them: change of basis, matrix decompositions (CR, LU, QR, SVD), and the optimisation methods (gradient descent, Newton's method, Adam) used to train them. Click a module name to open it.
 
 ### Architecture_ScratchCodes
 
-Deep learning architectures implemented from scratch with the forward pass, loss, backpropagation and parameter update written out explicitly.
+Deep learning architectures implemented from scratch, with the forward pass, loss, backpropagation and parameter update written out explicitly.
 
 | # | Module | Description |
 |---|--------|-------------|
@@ -37,12 +37,12 @@ The linear algebra, decompositions and optimisation topics that underpin the arc
 
 | # | Module | Description |
 |---|--------|-------------|
-| 1 | [ChangeOfBasis](./Linear_Algebra_Foundations/ChangeOfBasis) | Expressing the same vector and the same linear map in different bases using the change-of-basis matrix |
-| 2 | [CR_Decomposition](./Linear_Algebra_Foundations/CR_Decomposition) | Factorising a matrix as $A = CR$ from its pivot columns and RREF |
-| 3 | [LUvsQR_Decomposition](./Linear_Algebra_Foundations/LUvsQR_Decomposition) | LU decomposition (elimination) and QR decomposition (orthogonalisation) side by side |
-| 4 | [SVD](./Linear_Algebra_Foundations/SVD) | SVD computed from the eigendecomposition of $A^\top A$, used for rank-$k$ image compression |
-| 5 | [GDvsNewtons](./Linear_Algebra_Foundations/GDvsNewtons) | Comparing gradient descent and Newton's method on an ill-conditioned quadratic |
-| 6 | [Adam Optimiser](./Linear_Algebra_Foundations/Adam%20Optimiser) | The Adam optimiser, built from momentum and RMSProp-style adaptive step sizes with bias correction |
+| 1 | [ChangeOfBasis](./Linear_Algebra_and_Optimisation/ChangeOfBasis) | Expressing the same vector and the same linear map in different bases using the change-of-basis matrix |
+| 2 | [CR_Decomposition](./Linear_Algebra_and_Optimisation/CR_Decomposition) | Factorising a matrix as $A = CR$ from its pivot columns and RREF |
+| 3 | [LUvsQR_Decomposition](./Linear_Algebra_and_Optimisation/LUvsQR_Decomposition) | LU decomposition (elimination) and QR decomposition (orthogonalisation) side by side |
+| 4 | [SVD](./Linear_Algebra_and_Optimisation/SVD) | SVD computed from the eigendecomposition of $A^\top A$, used for rank-$k$ image compression |
+| 5 | [GDvsNewtons](./Linear_Algebra_and_Optimisation/GDvsNewtons) | Comparing gradient descent and Newton's method on an ill-conditioned quadratic |
+| 6 | [Adam Optimiser](./Linear_Algebra_and_Optimisation/Adam%20Optimiser) | The Adam optimiser, built from momentum and RMSProp-style adaptive step sizes with bias correction |
 
 Each module folder has its own README with the underlying math, code and results, and a notebook that runs end to end.
 
@@ -78,7 +78,7 @@ MLDL-InternshipCUSAT/
 │   ├── LSTM/
 │   ├── CNN/
 │   └── Token_Embedding_Positional_Encoding/
-├── Linear_Algebra_Foundations/
+├── Linear_Algebra_and_Optimisation/
 │   ├── Adam Optimiser/
 │   ├── CR_Decomposition/
 │   ├── ChangeOfBasis/
