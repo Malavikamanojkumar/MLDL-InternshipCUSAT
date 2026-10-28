@@ -10,18 +10,18 @@ The internship studied machine learning and deep learning from their mathematica
 |---|---|
 | **Programme** | Summer Internship Programme: *Advanced Mathematical Foundations of Machine Learning and Deep Learning Optimization* |
 | **Institution** | Department of Mathematics, Cochin University of Science and Technology (CUSAT), Kochi |
-| **Duration** | 1 June 2026 – 29 June 2026 (120 hours) |
+| **Duration** | 1 June 2026 – 29 June 2026 |
 | **Guide** | Dr. Linu Pinto, Assistant Professor |
 | **Certificate** | [Internship Certificate (PDF)](assets/Internship_Certificate.pdf) |
 | **Notes and report** | [Google Drive: LaTeX notes and internship report](<YOUR_DRIVE_LINK>) |
 
 ## Projects
 
-The repository is split into two sections. Click a module name to open it.
+The repository is organised into two sections : 
 
 ### Architecture_ScratchCodes
 
-Deep learning architectures implemented from scratch, with the forward pass, loss, backpropagation and parameter update written out explicitly.
+Deep learning architectures implemented from scratch with the forward pass, loss, backpropagation and parameter update written out explicitly.
 
 | # | Module | Description |
 |---|--------|-------------|
@@ -31,7 +31,7 @@ Deep learning architectures implemented from scratch, with the forward pass, los
 | 4 | [CNN](./Architecture_ScratchCodes/CNN) | Convolutional network classifying 8×8 images of "X" and "O" |
 | 5 | [Token Embedding and Positional Encoding](./Architecture_ScratchCodes/Token_Embedding_Positional_Encoding) | Step-by-step construction of token embeddings and sinusoidal positional encodings, as used at the input of a Transformer |
 
-### Linear_Algebra_Foundations
+### Linear_Algebra_and_Optimisation
 
 The linear algebra, decompositions and optimisation topics that underpin the architectures above.
 
